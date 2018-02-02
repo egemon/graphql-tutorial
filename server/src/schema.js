@@ -7,12 +7,12 @@ import { resolvers } from './resolvers';
 
 const typeDefs = `
 type Channel {
-  id: ID!                # "!" denotes a required field
+  id: ID!
   name: String
   messages: [Message]!
 }
 
-input MessageInput{
+input MessageInput {
   channelId: ID!
   text: String
 }
@@ -24,7 +24,7 @@ type Message {
 
 # This type specifies the entry points into our API
 type Query {
-  channels: [Channel]    # "[]" means this is a list of channels
+  channels: [Channel]
   channel(id: ID!): Channel
 }
 

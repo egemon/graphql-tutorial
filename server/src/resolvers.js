@@ -37,12 +37,12 @@ export const resolvers = {
       channels.push(newChannel);
       return newChannel;
     },
-    addMessage: (root, { message }) => {
-      const channel = channels.find(channel => channel.id === message.channelId);
+    addMessage: (root, args) => {
+      const channel = channels.find(channel => channel.id === args.message.channelId);
       if(!channel)
         throw new Error("Channel does not exist");
 
-      const newMessage = { id: String(nextMessageId++), text: message.text };
+      const newMessage = { id: String(nextMessageId++), text: args.message.text };
       channel.messages.push(newMessage);
       return newMessage;
     },
